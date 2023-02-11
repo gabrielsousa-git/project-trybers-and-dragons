@@ -1,4 +1,4 @@
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
@@ -48,7 +48,8 @@ export default class Character implements Fighter {
     return this._lifePoints;
   };
 
-  attack = (enemy: Fighter) => enemy.receiveDamage(this.strength);
+  attack = (enemy: Fighter | SimpleFighter) => enemy
+    .receiveDamage(this.strength);
 
   levelUp = () => {
     this._maxLifePoints += getRandomInt(1, 10);
